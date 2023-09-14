@@ -1,7 +1,13 @@
 import "./App.css";
+import nflScoresApi from "./api/nflscoresapi";
 
 function App() {
-  return <div className="App"></div>;
+  nflScoresApi
+    .get("teams", {
+      params: { id: "32" },
+    })
+    .then((resp) => console.log(resp.data.response[0]))
+    .catch((e) => console.log(e));
 }
 
 export default App;
