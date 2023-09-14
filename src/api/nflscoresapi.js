@@ -1,8 +1,9 @@
 import axios from "axios";
+const rapidApiKey = process.env.REACT_APP_API_KEY;
 const options = {
   url: "https://api-american-football.p.rapidapi.com/",
   headers: {
-    "X-RapidAPI-Key": "a55b6bc1b7msh59c5e8ece428b6dp15e9cfjsn3f72988b246f",
+    "X-RapidAPI-Key": { rapidApiKey },
     "X-RapidAPI-Host": "api-american-football.p.rapidapi.com",
   },
 };
