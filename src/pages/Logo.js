@@ -25,6 +25,10 @@ function Logo({ list }) {
     console.log(prevAnswers);
   };
 
+  const newGame = () => {
+    setPrevAnswers([]);
+    setAnswers(setAllAnswers());
+  };
   function setAllAnswers() {
     const shuffledTeams = teams
       // sort the teams in a random order each time to shuffle the possible answers
@@ -70,6 +74,7 @@ function Logo({ list }) {
       <GameView
         answerList={answers}
         handlerNextAns={getNextAnswers}
+        handlerNewGame={newGame}
         image={logo}
       />
       {/* <Testing answerList={answers} prevAnsList={prevAnswers} /> */}

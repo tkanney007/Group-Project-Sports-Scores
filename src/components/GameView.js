@@ -1,4 +1,4 @@
-function GameView({ answerList, handlerNextAns, image }) {
+function GameView({ image, answerList, handlerNextAns, handlerNewGame }) {
   const handlerCheckAnswer = (isAns) => {
     console.log("Correct Answer?", isAns);
     if (isAns == "true") {
@@ -18,6 +18,7 @@ function GameView({ answerList, handlerNextAns, image }) {
       ))}
       <br />
       <button onClick={handlerNextAns}>Next Question</button>
+      <button onClick={handlerNewGame}>New Game</button>
     </div>
   );
 }
