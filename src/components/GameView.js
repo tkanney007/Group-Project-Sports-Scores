@@ -1,6 +1,7 @@
-function GameView({ answerList, game, image, answerID, answerName }) {
-  const handlerCheckAnswer = (id) => {
-    if (id === answerID) {
+function GameView({ answerList, handlerNextAns, image }) {
+  const handlerCheckAnswer = (isAns) => {
+    console.log("Correct Answer?", isAns);
+    if (isAns == "true") {
       alert("You have the right answer!");
     } else {
       alert("Wrong answer!");
@@ -10,11 +11,13 @@ function GameView({ answerList, game, image, answerID, answerName }) {
     <div>
       <img src={image}></img>
       <br />
-      <p>{answerName}</p>
-      <br />
       {answerList.map((item) => (
-        <Button onClick={() => handlerCheckAnswer(item.id)}>{item.name}</Button>
+        <button onClick={() => handlerCheckAnswer(item.IsAnswer)}>
+          {item.FullName}
+        </button>
       ))}
+      <br />
+      <button onClick={handlerNextAns}>Next Question</button>
     </div>
   );
 }

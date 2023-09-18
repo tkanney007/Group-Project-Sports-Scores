@@ -1,8 +1,12 @@
-function Testing({ list }) {
+function Testing({ answerList, prevAnsList }) {
   return (
     <>
-      {list.map((item) => (
-        <p>{item.Name}</p>
+      {answerList.map((item) => (
+        <p>{item.Key}</p>
+      ))}
+      <p>Previous Answers:</p>
+      {prevAnsList.map((item) => (
+        <p>{item.Key}</p>
       ))}
     </>
   );
