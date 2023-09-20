@@ -1,14 +1,30 @@
-function GameView({ image, answerList, handlerNextAns, handlerNewGame }) {
+function GameView({
+  image,
+  answerList,
+  numQuestions,
+  correctAns,
+  handlerNextAns,
+  handlerNewGame,
+  handlerSetCorrectAns,
+  handlerEndGame,
+}) {
   const handlerCheckAnswer = (isAns) => {
-    console.log("Correct Answer?", isAns);
     if (isAns == "true") {
-      alert("You have the right answer!");
+      //alert("You have the right answer!");
+      {
+        handlerSetCorrectAns();
+      }
     } else {
-      alert("Wrong answer!");
+      //alert("Wrong answer!");
     }
+    handlerNextAns();
   };
   return (
     <div>
+      {}
+      <p>
+        Score: {correctAns}/{numQuestions}
+      </p>
       <img style={{ maxHeight: "161px", width: "auto" }} src={image}></img>
       <br />
       {answerList.map((item) => (

@@ -6,12 +6,26 @@ import nflTeamsApi from "../api/nflteamsapi";
 function Logo({ list }) {
   const [teams, setTeams] = useState([]);
   const [answers, setAnswers] = useState([]);
-  const [logo, setLogo] = useState("");
   const [prevAnswers, setPrevAnswers] = useState([]);
+  const [logo, setLogo] = useState("");
+  const [gameActive, setGameActive] = useState("false");
+  const [numQuestions, setNumQuestions] = useState(10);
+  const [numCorrect, setNumCorrect] = useState(0);
 
   const getTeams = async () => {
     const response = await nflTeamsApi.get();
     setTeams(response.data);
+    setGameActive(false);
+  };
+
+  const beginGame = () => {
+    getAnswers();
+    setGameActive(true);
+    setNumQuestions(10);
+  };
+
+  const endGame = () => {
+    setGameActive(false);
   };
   const getAnswers = () => {
     setAnswers(setAllAnswers());
@@ -44,6 +58,10 @@ function Logo({ list }) {
     setLogo(shuffledTeams[0].WikipediaLogoUrl);
     return shuffledTeams.sort(() => 0.5 - Math.random());
   }
+  const setCorrectAnsCount = () => {
+    const correctAns = numCorrect + 1;
+    setNumCorrect(correctAns);
+  };
   // function randomTeam(abbrev) {
   //   const filteredTeams = teams.filter((item) => item.Key !== abbrev);
   //   let team = [];
@@ -68,15 +86,21 @@ function Logo({ list }) {
   return (
     <div>
       <h2>NFL Logo Game</h2>
-      <button onClick={getAnswers}>Play The Game!</button>
+      {gameActive ? null : <button onClick={beginGame}>Play The Game!</button>}
       {/* <button onClick={getNextAnswers}>Next Question</button> */}
       <br />
-      <GameView
-        answerList={answers}
-        handlerNextAns={getNextAnswers}
-        handlerNewGame={newGame}
-        image={logo}
-      />
+      {gameActive ? (
+        <GameView
+          answerList={answers}
+          handlerNextAns={getNextAnswers}
+          handlerNewGame={newGame}
+          handlerSetCorrectAns={setCorrectAnsCount}
+          handlerEndGame={endGame}
+          image={logo}
+          numQuestions={numQuestions}
+          correctAns={numCorrect}
+        />
+      ) : null}
       {/* <Testing answerList={answers} prevAnsList={prevAnswers} /> */}
     </div>
   );
