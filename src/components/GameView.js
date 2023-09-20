@@ -9,7 +9,7 @@ function GameView({ image, answerList, handlerNextAns, handlerNewGame }) {
   };
   return (
     <div>
-      <img src={image}></img>
+      <img style={{ maxHeight: "161px", width: "auto" }} src={image}></img>
       <br />
       {answerList.map((item) => (
         <button onClick={() => handlerCheckAnswer(item.IsAnswer)}>
