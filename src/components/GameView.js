@@ -1,4 +1,4 @@
-import "./gameview.css"
+import style from "../components/gameview.module.css";
 import { useState } from "react";
 function GameView({
   image,
@@ -49,6 +49,7 @@ function GameView({
       <br />
       {answerList.map((item) => (
         <button
+          className={style.answerBtn}
           style={{
             backgroundColor: userAns ? (item.IsAnswer ? "green" : "red") : null,
           }}
