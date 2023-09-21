@@ -1,36 +1,61 @@
 import "./gameview.css"
-
+import { useState } from "react";
 function GameView({
   image,
   answerList,
   numQuestions,
+  currentQuest,
   correctAns,
   handlerNextAns,
   handlerNewGame,
   handlerSetCorrectAns,
+  handlerSetResultText,
+  handlerSetQuestionCount,
   handlerEndGame,
 }) {
-  const handlerCheckAnswer = (isAns) => {
-    if (isAns == "true") {
+  const [userAns, setUserAns] = useState(false);
+  const handlerCheckAnswer = (event, isAns) => {
+    handlerSetQuestionCount();
+
+    if (isAns) {
       //alert("You have the right answer!");
-      {
-        handlerSetCorrectAns();
-      }
+      console.log("I am here!");
+      setUserAns(true);
+      handlerSetCorrectAns();
+      handlerSetResultText("You got it RIGHT!");
     } else {
       //alert("Wrong answer!");
+      setUserAns(true);
+      handlerSetResultText("You got it WRONG!");
     }
-    handlerNextAns();
+
+    setTimeout(() => {
+      console.log(currentQuest);
+      if (currentQuest < numQuestions) {
+        handlerNextAns();
+        setUserAns(false);
+        handlerSetResultText("");
+      } else {
+        handlerEndGame();
+      }
+    }, 2000);
   };
   return (
     <div>
-      {}
       <p>
         Score: {correctAns}/{numQuestions}
       </p>
       <img id="logoImg" src={image}></img>
       <br />
       {answerList.map((item) => (
-        <button onClick={() => handlerCheckAnswer(item.IsAnswer)}>
+        <button
+          style={{
+            backgroundColor: userAns ? (item.IsAnswer ? "green" : "red") : null,
+          }}
+          onClick={(event) => {
+            handlerCheckAnswer(event, item.IsAnswer);
+          }}
+        >
           {item.FullName}
         </button>
       ))}
