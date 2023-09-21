@@ -1,3 +1,4 @@
+import "./gameview.css"
 import { useState } from "react";
 function GameView({
   image,
@@ -44,7 +45,7 @@ function GameView({
       <p>
         Score: {correctAns}/{numQuestions}
       </p>
-      <img style={{ maxHeight: "161px", width: "auto" }} src={image}></img>
+      <img id="logoImg" src={image}></img>
       <br />
       {answerList.map((item) => (
         <button
