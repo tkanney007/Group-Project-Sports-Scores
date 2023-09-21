@@ -40,6 +40,7 @@ function Logo({ list }) {
   };
 
   const newGame = () => {
+    setNumCorrect(0);
     setPrevAnswers([]);
     setAnswers(setAllAnswers());
   };

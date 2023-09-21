@@ -8,10 +8,11 @@ function GameView({
   handlerSetCorrectAns,
   handlerEndGame,
 }) {
-  const handlerCheckAnswer = (isAns) => {
+  const handlerCheckAnswer = (event, isAns) => {
     if (isAns == "true") {
       //alert("You have the right answer!");
       {
+        event.target.style = { backGroundColor: "green" };
         handlerSetCorrectAns();
       }
     } else {
@@ -21,14 +22,13 @@ function GameView({
   };
   return (
     <div>
-      {}
       <p>
         Score: {correctAns}/{numQuestions}
       </p>
       <img style={{ maxHeight: "161px", width: "auto" }} src={image}></img>
       <br />
       {answerList.map((item) => (
-        <button onClick={() => handlerCheckAnswer(item.IsAnswer)}>
+        <button onClick={() => handlerCheckAnswer(this, item.IsAnswer)}>
           {item.FullName}
         </button>
       ))}
