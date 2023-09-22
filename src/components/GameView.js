@@ -41,17 +41,18 @@ function GameView({
     }, 2000);
   };
   return (
-    <div>
-      <p>
+    <div className={style.outerCenterBoard}>
+    <div className={style.centerBoard}>
+      <p className={style.score}>
         Score: {correctAns}/{numQuestions}
       </p>
-      <img id="logoImg" src={image}></img>
+      <img className={style.logoImg} src={image}></img>
       <br />
       {answerList.map((item) => (
         <button
           className={style.answerBtn}
           style={{
-            backgroundColor: userAns ? (item.IsAnswer ? "green" : "red") : null,
+            backgroundColor: userAns ? (item.IsAnswer ? "rgb(29, 123, 29, 0.847)" : "rgb(255, 0, 0, 0.700)") : null,
           }}
           onClick={(event) => {
             handlerCheckAnswer(event, item.IsAnswer);
@@ -61,8 +62,9 @@ function GameView({
         </button>
       ))}
       <br />
-      <button onClick={handlerNextAns}>Next Question</button>
-      <button onClick={handlerNewGame}>New Game</button>
+      <button className={style.gaemButtons} onClick={handlerNextAns}>Next Question</button>
+      <button className={style.gaemButtons} onClick={handlerNewGame}>New Game</button>
+    </div>
     </div>
   );
 }
