@@ -89,6 +89,9 @@ function Logo({ list }) {
 
   return (
     <div id="gameBoard">
+
+  <div id="aThing">
+    <div id="aThing2">
       <h2 id="gameName">NFL Logo Game</h2>
       {isEndGame ? (
         <div className={style.scoreContainer}>
@@ -104,6 +107,8 @@ function Logo({ list }) {
           {isEndGame ? "Play again!" : "Play The Game!"}
         </button>
       )}
+    </div>
+  </div>
       {/* <button onClick={getNextAnswers}>Next Question</button> */}
       <br />
       {/* <p id="resultText">{resultText}</p> */}

@@ -23,6 +23,13 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+.answerBtn:hover{
+  animation: rainbow;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
 .gaemButtons {
   text-align: center;
   font-size: 18px;
@@ -38,7 +45,16 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+.centerBoard{
+  width: 1000px;
+  height: 762px;
+  background-color: rgba(0, 0, 0, 0.486);
+  
+}
+
 .outerCenterBoard {
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
 
@@ -50,8 +66,36 @@
 }
 
 .result {
-  height: auto;
+  height: 295px;
   width: auto;
-  background: rgba(46, 46, 46, 0.922);
-  border-radius: 25px;
+}
+
+
+@keyframes rainbow {
+  0%   {border-color: red;}
+  25%  {border-color: yellow;}
+  50%  {border-color: blue;}
+  100% {border-color: green;}
+}
+
+@media screen and (max-width: 600px) {
+  .centerBoard {
+    width: 410px;
+    height: auto;
+  }
+
+  .logoImg{
+    width: 390px;
+    margin-bottom: -16px;
+  }
+
+  .result{
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 928px) and (min-width: 601px) {
+  .centerBoard{
+    width: 600px;
+  }
 }
