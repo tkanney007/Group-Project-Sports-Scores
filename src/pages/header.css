@@ -9,6 +9,7 @@
 }
 
 #headerNav{
+    color: rgb(255, 0, 0, 0.847);
     margin-top: -10px;
 }
 
@@ -21,8 +22,8 @@
 }
 
 .gaemLinks{
-    border-radius: 12px;
-    color: rgb(255, 255, 255);
+    color: seashell;
+    font-family: sans-serif;
     -webkit-text-stroke: 1px rgb(0, 0, 0);
     font-size: 20px;
     font-weight: 800;

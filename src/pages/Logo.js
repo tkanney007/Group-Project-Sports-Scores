@@ -2,6 +2,7 @@ import GameView from "../components/GameView";
 import Testing from "../components/Testing";
 import { useState, useEffect } from "react";
 import nflTeamsApi from "../api/nflteamsapi";
+import "./logo.css"
 
 function Logo({ list }) {
   const [teams, setTeams] = useState([]);
@@ -98,12 +99,12 @@ function Logo({ list }) {
   }, []);
 
   return (
-    <div>
-      <h2>NFL Logo Game</h2>
-      {gameActive ? null : <button onClick={beginGame}>Play The Game!</button>}
+    <div id="gameBoard">
+      <h2 id="gameName">NFL Logo Game</h2>
+      {gameActive ? null : <button id="ptgBtn" onClick={beginGame}>Play The Game!</button>}
       {/* <button onClick={getNextAnswers}>Next Question</button> */}
       <br />
-      <p>{resultText}</p>
+      <p id="resultText">{resultText}</p>
       {gameActive ? (
         <GameView
           answerList={answers}
