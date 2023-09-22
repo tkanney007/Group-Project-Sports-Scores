@@ -34,14 +34,18 @@ function Logo({ list }) {
     setIsEndGame(true);
     setGameActive(false);
     setResultText("");
+    prevAnswers.length = 0;
   };
   const getAnswers = () => {
     setAnswers(setAllAnswers());
   };
   const getNextAnswers = () => {
-    const answer = answers.filter((item) => item.IsAnswer == "true");
+    const answer = answers.filter((item) => item.IsAnswer === true);
     const newPrevAnswers = [...prevAnswers, ...answer];
     setPrevAnswers(newPrevAnswers);
+    if (prevAnswers.length >= 28) {
+      prevAnswers.length = 0;
+    }
     setAnswers(setAllAnswers());
   };
 
@@ -85,22 +89,26 @@ function Logo({ list }) {
 
   return (
     <div id="gameBoard">
-      <div id="aThing">
-        <div id="aThing2">
-          <h2 id="gameName">NFL Logo Game</h2>
-          {isEndGame ? (
-            <h2 id="score">
-              You scored {numCorrect} out of {numQuestions} for a grade of{" "}
-              {(numCorrect / numQuestions) * 100}%!
-            </h2>
-          ) : null}
-          {gameActive ? null : (
-            <button id="ptgBtn" onClick={beginGame}>
-              {isEndGame ? "Play again!" : "Play The Game!"}
-            </button>
-          )}
+
+  <div id="aThing">
+    <div id="aThing2">
+      <h2 id="gameName">NFL Logo Game</h2>
+      {isEndGame ? (
+        <div className={style.scoreContainer}>
+          <p id="score">GAME OVER!</p>
+          <h2 id="score">
+            You scored {numCorrect}/{numQuestions} and got{" "}
+            {(numCorrect / numQuestions) * 100}% of the logos correct!
+          </h2>
         </div>
-      </div>
+      ) : null}
+      {gameActive ? null : (
+        <button id="ptgBtn" onClick={beginGame}>
+          {isEndGame ? "Play again!" : "Play The Game!"}
+        </button>
+      )}
+    </div>
+  </div>
       {/* <button onClick={getNextAnswers}>Next Question</button> */}
       <br />
       {/* <p id="resultText">{resultText}</p> */}
