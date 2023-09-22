@@ -34,14 +34,18 @@ function Logo({ list }) {
     setIsEndGame(true);
     setGameActive(false);
     setResultText("");
+    prevAnswers.length = 0;
   };
   const getAnswers = () => {
     setAnswers(setAllAnswers());
   };
   const getNextAnswers = () => {
-    const answer = answers.filter((item) => item.IsAnswer == "true");
+    const answer = answers.filter((item) => item.IsAnswer === true);
     const newPrevAnswers = [...prevAnswers, ...answer];
     setPrevAnswers(newPrevAnswers);
+    if (prevAnswers.length >= 28) {
+      prevAnswers.length = 0;
+    }
     setAnswers(setAllAnswers());
   };
 
@@ -87,10 +91,13 @@ function Logo({ list }) {
     <div id="gameBoard">
       <h2 id="gameName">NFL Logo Game</h2>
       {isEndGame ? (
-        <h2 id="score">
-          You scored {numCorrect} out of {numQuestions} for a grade of{" "}
-          {(numCorrect / numQuestions) * 100}%!
-        </h2>
+        <div className={style.scoreContainer}>
+          <p id="score">GAME OVER!</p>
+          <h2 id="score">
+            You scored {numCorrect}/{numQuestions} and got{" "}
+            {(numCorrect / numQuestions) * 100}% of the logos correct!
+          </h2>
+        </div>
       ) : null}
       {gameActive ? null : (
         <button id="ptgBtn" onClick={beginGame}>
