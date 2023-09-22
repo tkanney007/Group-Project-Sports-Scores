@@ -2,7 +2,7 @@ import GameView from "../components/GameView";
 import Testing from "../components/Testing";
 import { useState, useEffect } from "react";
 import nflTeamsApi from "../api/nflteamsapi";
-import "./logo.css"
+import style from "./logo.css";
 
 function Logo({ list }) {
   const [teams, setTeams] = useState([]);
@@ -13,6 +13,7 @@ function Logo({ list }) {
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [numCorrect, setNumCorrect] = useState(0);
   const [resultText, setResultText] = useState("");
+  const [isEndGame, setIsEndGame] = useState(false);
   const numQuestions = 10;
 
   const getTeams = async () => {
@@ -24,14 +25,14 @@ function Logo({ list }) {
   const beginGame = () => {
     getAnswers();
     setGameActive(true);
+    setIsEndGame(false);
     setCurrentQuestion(1);
     setNumCorrect(0);
   };
 
   const endGame = () => {
+    setIsEndGame(true);
     setGameActive(false);
-    setCurrentQuestion(1);
-    setNumCorrect(0);
     setResultText("");
   };
   const getAnswers = () => {
@@ -77,23 +78,7 @@ function Logo({ list }) {
   const handlerSetResultText = (text) => {
     setResultText(text);
   };
-  // function randomTeam(abbrev) {
-  //   const filteredTeams = teams.filter((item) => item.Key !== abbrev);
-  //   let team = [];
 
-  //   team[0] = filteredTeams[Math.floor(Math.random() * filteredTeams.length)];
-
-  //   // console.log(team);
-  //   return team;
-  // }
-  // function setAllAnswers() {
-  //   const shuffledTeams = teams.sort(() => 0.5 - Math.random()).splice(0, 4);
-  //   // .filter((item) => item.Key !== answer.Key);
-  //   shuffledTeams.forEach((e) => (e.IsAnswer = "false"));
-  //   shuffledTeams[0].IsAnswer = "true";
-  //   console.log("Answer:", answers);
-  //   return shuffledTeams;
-  // }
   useEffect(() => {
     getTeams();
   }, []);
@@ -101,10 +86,20 @@ function Logo({ list }) {
   return (
     <div id="gameBoard">
       <h2 id="gameName">NFL Logo Game</h2>
-      {gameActive ? null : <button id="ptgBtn" onClick={beginGame}>Play The Game!</button>}
+      {isEndGame ? (
+        <h2 id="score">
+          You scored {numCorrect} out of {numQuestions} for a grade of{" "}
+          {(numCorrect / numQuestions) * 100}%!
+        </h2>
+      ) : null}
+      {gameActive ? null : (
+        <button id="ptgBtn" onClick={beginGame}>
+          {isEndGame ? "Play again!" : "Play The Game!"}
+        </button>
+      )}
       {/* <button onClick={getNextAnswers}>Next Question</button> */}
       <br />
-      <p id="resultText">{resultText}</p>
+      {/* <p id="resultText">{resultText}</p> */}
       {gameActive ? (
         <GameView
           answerList={answers}
@@ -118,8 +113,10 @@ function Logo({ list }) {
           numQuestions={numQuestions}
           currentQuest={currentQuestion}
           correctAns={numCorrect}
+          result={resultText}
         />
       ) : null}
+
       {/* <Testing answerList={answers} prevAnsList={prevAnswers} /> */}
     </div>
   );

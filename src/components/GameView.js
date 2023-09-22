@@ -6,6 +6,7 @@ function GameView({
   numQuestions,
   currentQuest,
   correctAns,
+  result,
   handlerNextAns,
   handlerNewGame,
   handlerSetCorrectAns,
@@ -42,29 +43,44 @@ function GameView({
   };
   return (
     <div className={style.outerCenterBoard}>
-    <div className={style.centerBoard}>
-      <p className={style.score}>
-        Score: {correctAns}/{numQuestions}
-      </p>
-      <img className={style.logoImg} src={image}></img>
-      <br />
-      {answerList.map((item) => (
-        <button
-          className={style.answerBtn}
-          style={{
-            backgroundColor: userAns ? (item.IsAnswer ? "rgb(29, 123, 29, 0.847)" : "rgb(255, 0, 0, 0.700)") : null,
-          }}
-          onClick={(event) => {
-            handlerCheckAnswer(event, item.IsAnswer);
-          }}
-        >
-          {item.FullName}
+      <div className={style.centerBoard}>
+        <p className={style.score}>
+          Score: {correctAns}/{numQuestions}
+        </p>
+        {userAns ? (
+          <div className={style.result}>
+            <p className={style.resultText}>{result}</p>
+          </div>
+        ) : (
+          <img className={style.logoImg} src={image}></img>
+        )}
+        <br />
+        {answerList.map((item) => (
+          <button
+            disabled={userAns}
+            className={style.answerBtn}
+            style={{
+              backgroundColor: userAns
+                ? item.IsAnswer
+                  ? "rgb(29, 123, 29, 0.847)"
+                  : "rgb(255, 0, 0, 0.700)"
+                : null,
+            }}
+            onClick={(event) => {
+              handlerCheckAnswer(event, item.IsAnswer);
+            }}
+          >
+            {item.FullName}
+          </button>
+        ))}
+        <br />
+        <button className={style.gaemButtons} onClick={handlerNextAns}>
+          Next Question
         </button>
-      ))}
-      <br />
-      <button className={style.gaemButtons} onClick={handlerNextAns}>Next Question</button>
-      <button className={style.gaemButtons} onClick={handlerNewGame}>New Game</button>
-    </div>
+        <button className={style.gaemButtons} onClick={handlerNewGame}>
+          New Game
+        </button>
+      </div>
     </div>
   );
 }
