@@ -85,18 +85,22 @@ function Logo({ list }) {
 
   return (
     <div id="gameBoard">
-      <h2 id="gameName">NFL Logo Game</h2>
-      {isEndGame ? (
-        <h2 id="score">
-          You scored {numCorrect} out of {numQuestions} for a grade of{" "}
-          {(numCorrect / numQuestions) * 100}%!
-        </h2>
-      ) : null}
-      {gameActive ? null : (
-        <button id="ptgBtn" onClick={beginGame}>
-          {isEndGame ? "Play again!" : "Play The Game!"}
-        </button>
-      )}
+      <div id="aThing">
+        <div id="aThing2">
+          <h2 id="gameName">NFL Logo Game</h2>
+          {isEndGame ? (
+            <h2 id="score">
+              You scored {numCorrect} out of {numQuestions} for a grade of{" "}
+              {(numCorrect / numQuestions) * 100}%!
+            </h2>
+          ) : null}
+          {gameActive ? null : (
+            <button id="ptgBtn" onClick={beginGame}>
+              {isEndGame ? "Play again!" : "Play The Game!"}
+            </button>
+          )}
+        </div>
+      </div>
       {/* <button onClick={getNextAnswers}>Next Question</button> */}
       <br />
       {/* <p id="resultText">{resultText}</p> */}
