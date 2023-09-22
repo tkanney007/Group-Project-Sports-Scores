@@ -89,8 +89,9 @@
     margin-bottom: -16px;
   }
 
-  .result{
-    font-size: 20px;
+  .resultText{
+    font-size: 58px;
+    height: 400px;
   }
 }
 
@@ -98,4 +99,10 @@
   .centerBoard{
     width: 600px;
   }
+
+  .logoImg{
+    width: 590px;
+    margin-bottom: -16px;
+  }
+
 }
