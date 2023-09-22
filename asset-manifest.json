@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.6eacc6cd.css",
-    "main.js": "/static/js/main.73d6187f.js",
-    "static/media/Background1.png": "/static/media/Background1.d92323a87be5f24ac2c3.png",
-    "static/media/football1.png": "/static/media/football1.b8aa4cb0fd292f159572.png",
-    "static/media/footballfield.png": "/static/media/footballfield.dd3c6d81143a3cf8dc74.png",
-    "index.html": "/index.html",
-    "main.6eacc6cd.css.map": "/static/css/main.6eacc6cd.css.map",
-    "main.73d6187f.js.map": "/static/js/main.73d6187f.js.map"
+    "main.css": "/Group-Project-Sports-Scores/static/css/main.28389fde.css",
+    "main.js": "/Group-Project-Sports-Scores/static/js/main.73d6187f.js",
+    "static/media/Background1.png": "/Group-Project-Sports-Scores/static/media/Background1.d92323a87be5f24ac2c3.png",
+    "static/media/football1.png": "/Group-Project-Sports-Scores/static/media/football1.b8aa4cb0fd292f159572.png",
+    "static/media/footballfield.png": "/Group-Project-Sports-Scores/static/media/footballfield.dd3c6d81143a3cf8dc74.png",
+    "index.html": "/Group-Project-Sports-Scores/index.html",
+    "main.28389fde.css.map": "/Group-Project-Sports-Scores/static/css/main.28389fde.css.map",
+    "main.73d6187f.js.map": "/Group-Project-Sports-Scores/static/js/main.73d6187f.js.map"
   },
   "entrypoints": [
-    "static/css/main.6eacc6cd.css",
+    "static/css/main.28389fde.css",
     "static/js/main.73d6187f.js"
   ]
 }
