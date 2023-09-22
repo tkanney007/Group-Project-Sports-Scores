@@ -1,10 +1,9 @@
-.score{
+.score {
   font-size: 32px;
   color: rgb(230, 96, 0);
-  -webkit-text-stroke: .5px seashell;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+  -webkit-text-stroke: 0.5px seashell;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-
 
 .logoImg {
   height: 400px;
@@ -21,10 +20,10 @@
   height: 60px;
   width: 220px;
   color: seashell;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.gaemButtons{
+.gaemButtons {
   text-align: center;
   font-size: 18px;
   background-color: rgba(46, 46, 46, 0.922);
@@ -36,9 +35,23 @@
   height: 40px;
   width: 160px;
   color: seashell;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.outerCenterBoard{
+.outerCenterBoard {
   text-align: center;
+}
+
+.resultText {
+  font-size: 120px;
+  color: rgb(230, 96, 0);
+  -webkit-text-stroke: 0.25px seashell;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.result {
+  height: auto;
+  width: auto;
+  background: rgba(46, 46, 46, 0.922);
+  border-radius: 25px;
 }
